@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoGuard - Environmental Monitoring System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🌍 EcoGuard</h1>
+                <p class="subtitle">Environmental Monitoring & AI Intelligence System</p>
+            </div>
+            <div class="time-display" id="timeDisplay"></div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <!-- Quick Stats Row -->
+            <section class="stats-row">
+                <div class="stat-card" id="aqiCard">
+                    <div class="stat-header">🌫️ Air Quality</div>
+                    <div class="stat-value" id="aqi">-</div>
+                    <div class="stat-label" id="airStatus">-</div>
+                </div>
+                <div class="stat-card" id="tempCard">
+                    <div class="stat-header">🌡️ Temperature</div>
+                    <div class="stat-value" id="temperature">-</div>
+                    <div class="stat-label">°C</div>
+                </div>
+                <div class="stat-card" id="co2Card">
+                    <div class="stat-header">💨 CO₂ Level</div>
+                    <div class="stat-value" id="co2">-</div>
+                    <div class="stat-label">ppm</div>
+                </div>
+                <div class="stat-card" id="waterCard">
+                    <div class="stat-header">💧 Water Usage</div>
+                    <div class="stat-value" id="waterTotal">-</div>
+                    <div class="stat-label">L/day</div>
+                </div>
+            </section>
+
+            <!-- Tabs Navigation -->
+            <div class="tabs">
+                <button class="tab-button active" data-tab="air">Air Quality</button>
+                <button class="tab-button" data-tab="waste">Waste Management</button>
+                <button class="tab-button" data-tab="water">Water Management</button>
+                <button class="tab-button" data-tab="ai">AI Chatbot</button>
+            </div>
+
+            <!-- Air Quality Panel -->
+            <section class="tab-content active" id="air-tab">
+                <div class="panel">
+                    <h2>📊 Air Quality Monitoring</h2>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-label">AQI Index</div>
+                            <div class="metric-value" id="aqi2">-</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="aqiFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">PM2.5</div>
+                            <div class="metric-value" id="pm25">-</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="pm25Fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">PM10</div>
+                            <div class="metric-value" id="pm10">-</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="pm10Fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">CO₂</div>
+                            <div class="metric-value" id="co22">-</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="co2Fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert-box" id="airAnalysis" style="display: none;">
+                        <h3>🤖 AI Analysis</h3>
+                        <p id="airAnalysisText"></p>
+                    </div>
+                    <button class="btn btn-primary" id="analyzeAirBtn">Get AI Analysis</button>
+                </div>
+            </section>
+
+            <!-- Waste Management Panel -->
+            <section class="tab-content" id="waste-tab">
+                <div class="panel">
+                    <h2>🗑️ Waste Management</h2>
+                    <div class="bins-container" id="binsContainer">
+                        <!-- Bins will be populated here -->
+                    </div>
+                    <div class="alert-box" id="wastePrediction" style="display: none;">
+                        <h3>🤖 AI Waste Prediction</h3>
+                        <div id="wastePredictionText"></div>
+                    </div>
+                    <button class="btn btn-primary" id="predictWasteBtn">Get Waste Prediction</button>
+                </div>
+            </section>
+
+            <!-- Water Management Panel -->
+            <section class="tab-content" id="water-tab">
+                <div class="panel">
+                    <h2>💧 Water Management</h2>
+                    <div class="water-grid">
+                        <div class="water-zone">
+                            <div class="zone-header">Zone A</div>
+                            <div class="zone-value" id="zoneA">-</div>
+                            <div class="zone-label">Liters</div>
+                        </div>
+                        <div class="water-zone">
+                            <div class="zone-header">Zone B</div>
+                            <div class="zone-value" id="zoneB">-</div>
+                            <div class="zone-label">Liters</div>
+                        </div>
+                        <div class="water-zone">
+                            <div class="zone-header">Zone C</div>
+                            <div class="zone-value" id="zoneC">-</div>
+                            <div class="zone-label">Liters</div>
+                        </div>
+                        <div class="water-zone">
+                            <div class="zone-header">Total Usage</div>
+                            <div class="zone-value" id="zoneTotal">-</div>
+                            <div class="zone-label">Liters/day</div>
+                        </div>
+                    </div>
+                    <div class="water-status" id="waterStatus">
+                        Status: <span id="waterStatusText">-</span>
+                    </div>
+                    <div class="alert-box" id="leakAlert" style="display: none;">
+                        <h3 style="color: #e74c3c;">⚠️ Leak Detection Alert</h3>
+                        <div id="leakAlertText"></div>
+                    </div>
+                    <button class="btn btn-primary" id="checkLeakBtn">Check for Leaks</button>
+                </div>
+            </section>
+
+            <!-- AI Chat Panel -->
+            <section class="tab-content" id="ai-tab">
+                <div class="panel chat-panel">
+                    <h2>🤖 AI Chatbot</h2>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            <p>Hello! I'm EcoGuard AI. Ask me anything about your environmental data, waste management, water usage, or air quality!</p>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input
+                            type="text"
+                            class="chat-input"
+                            id="chatInput"
+                            placeholder="Ask me about environmental data..."
+                            autocomplete="off"
+                        >
+                        <button class="btn btn-primary" id="sendChatBtn">Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Panel -->
+            <section class="settings">
+                <h3>⚙️ Settings</h3>
+                <label class="toggle-label">
+                    <input type="checkbox" id="autoRefresh" checked>
+                    <span>Auto-refresh data (5 seconds)</span>
+                </label>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 EcoGuard - Environmental Monitoring System | Last update: <span id="lastUpdate">-</span></p>
+        </footer>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
