@@ -1,8 +1,14 @@
 // API Helper Functions
 // This file handles all communication with the backend
 
-// Determine API base URL - use current origin for relative requests
-const API_BASE_URL = window.location.origin;
+// Determine API base URL - use environment variable or default to backend server
+// For development: http://localhost:8000
+// For production: Set REACT_APP_API_URL environment variable
+const API_BASE_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:8000'
+    : (window.location.origin.includes('vercel') 
+        ? 'https://your-backend-url.onrender.com' // Replace with your deployed backend URL
+        : window.location.origin);
 
 /**
  * Generic fetch wrapper with error handling
@@ -264,4 +270,3 @@ function clearChat() {
         `;
     }
 }
-
