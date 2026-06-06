@@ -1,0 +1,13 @@
+{
+  "name": "ecoguard-ai-frontend",
+  "version": "1.0.0",
+  "description": "EcoGuard Environmental Monitoring System - Frontend",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Build complete - static files'",
+    "dev": "echo 'This is a static frontend. Serve frontend/ directory.'"
+  },
+  "keywords": ["environmental", "monitoring", "ecoguard"],
+  "author": "sunny010526",
+  "license": "MIT"
+}
