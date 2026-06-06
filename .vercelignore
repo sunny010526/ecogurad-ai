@@ -1,0 +1,11 @@
+backend/
+run.bat
+run.ps1
+*.pyc
+__pycache__/
+.env
+.env.local
+venv/
+.venv/
+node_modules/
+.git/
